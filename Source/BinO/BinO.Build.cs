@@ -7,8 +7,20 @@ public class BinO : ModuleRules
 	public BinO(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = PCHUsageMode.UseExplicitOrSharedPCHs;
+
+		PublicIncludePaths.AddRange(new string[] { "BinO" });
 	
-		PublicDependencyModuleNames.AddRange(new string[] { "Core", "CoreUObject", "Engine", "InputCore", "EnhancedInput" });
+		PublicDependencyModuleNames.AddRange(new string[] 
+		{ 
+			"Core", 
+			"CoreUObject", 
+			"Engine", 
+			"InputCore", 
+			"EnhancedInput",
+			"AnimGraphRuntime",
+            "OnlineSubsystem",
+            "OnlineSubsystemSteam"
+        });
 
 		PrivateDependencyModuleNames.AddRange(new string[] {  });
 
