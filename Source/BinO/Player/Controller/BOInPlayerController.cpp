@@ -3,3 +3,11 @@
 
 #include "Player/Controller/BOInPlayerController.h"
 
+void ABOInPlayerController::BeginPlay()
+{
+	Super::BeginPlay();
+	
+	bShowMouseCursor = false;
+	FInputModeGameOnly GameOnly;
+	SetInputMode(GameOnly);
+}

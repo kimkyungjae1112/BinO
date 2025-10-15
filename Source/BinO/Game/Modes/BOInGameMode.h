@@ -6,12 +6,11 @@
 #include "GameFramework/GameModeBase.h"
 #include "BOInGameMode.generated.h"
 
-/**
- * 
- */
 UCLASS()
 class BINO_API ABOInGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
 	
+public:
+	ABOInGameMode();
 };

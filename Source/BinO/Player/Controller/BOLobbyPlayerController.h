@@ -4,10 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/PlayerController.h"
-#include "BOInPlayerController.generated.h"
+#include "BOLobbyPlayerController.generated.h"
 
 UCLASS()
-class BINO_API ABOInPlayerController : public APlayerController
+class BINO_API ABOLobbyPlayerController : public APlayerController
 {
 	GENERATED_BODY()
 	

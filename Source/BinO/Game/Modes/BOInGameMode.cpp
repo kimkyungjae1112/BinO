@@ -2,4 +2,9 @@
 
 
 #include "Game/Modes/BOInGameMode.h"
+#include "Game/Session/BOGameSession.h"
 
+ABOInGameMode::ABOInGameMode()
+{
+	GameSessionClass = ABOGameSession::StaticClass();
+}
