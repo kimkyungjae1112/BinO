@@ -6,6 +6,19 @@
 #include "Components/ScrollBox.h"
 #include "Game/Instance/BOGameInstance.h"
 #include "UI/Lobby/BOServerRowWidget.h"
+#include "UI/Lobby/BOSelectionClassWidget.h"
+
+void UBOLobbyWidget::ToggleSelectionClassWidget()
+{
+	if (SelectionClassWidget->GetVisibility() == ESlateVisibility::Visible)
+	{
+		SelectionClassWidget->SetVisibility(ESlateVisibility::Hidden);
+	}
+	else
+	{
+		SelectionClassWidget->SetVisibility(ESlateVisibility::Visible);
+	}
+}
 
 void UBOLobbyWidget::NativeConstruct()
 {
@@ -24,6 +37,11 @@ void UBOLobbyWidget::NativeConstruct()
 	if (UBOGameInstance* GI = GetWorld()->GetGameInstance<UBOGameInstance>())
 	{
 		GI->OnServerListUpdated.AddUObject(this, &ThisClass::OnServerListUpdated);
+	}
+
+	if (SelectionClassWidget)
+	{
+		SelectionClassWidget->SetVisibility(ESlateVisibility::Hidden);
 	}
 }
 

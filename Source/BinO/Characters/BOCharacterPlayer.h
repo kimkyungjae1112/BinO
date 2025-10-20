@@ -38,10 +38,16 @@ public:
 public:
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+	void ChangeClass(UBOClassData* InClassData);
+
+
 protected:
 	virtual void BeginPlay() override;
 
 protected:
 	void Move(const FInputActionValue& Value);
 	void Look(const FInputActionValue& Value);
+
+	// Widget
+	void DisplaySelectionClassWidget();
 };

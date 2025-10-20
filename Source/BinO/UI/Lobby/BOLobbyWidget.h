@@ -9,6 +9,7 @@
 class UButton;
 class UScrollBox;
 class UBOServerRowWidget;
+class UBOSelectionClassWidget;
 struct FBlueprintSessionResult;
 
 UCLASS()
@@ -26,9 +27,15 @@ protected:
 	UPROPERTY(meta = (BindWidget))
 	TObjectPtr<UScrollBox> ServerListContainer;
 
+	UPROPERTY(meta = (BindWidget))
+	TObjectPtr<UBOSelectionClassWidget> SelectionClassWidget;
+
 protected:
 	UPROPERTY(EditAnywhere, Category = "UI")
 	TSubclassOf<UBOServerRowWidget> ServerRowWidgetClass;
+
+public:
+	void ToggleSelectionClassWidget();
 
 protected:
 	virtual void NativeConstruct() override;
@@ -41,6 +48,5 @@ private:
 	void FindGame();
 
 	void OnServerListUpdated(const TArray<FBlueprintSessionResult>& ServerList);
-
 };
 

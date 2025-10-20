@@ -3,7 +3,6 @@
 
 #include "Characters/BOCharacterPlayer.h"
 #include "GameFramework/SpringArmComponent.h"
-#include "GameFramework/PlayerController.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Camera/CameraComponent.h"
 #include "InputMappingContext.h"
@@ -11,6 +10,8 @@
 #include "EnhancedInputSubsystems.h"
 #include "Data/Class/BOClassData.h"
 #include "Data/Input/BOInputData.h"
+#include "Animation/AnimInstance.h"
+#include "Player/Controller/BOLobbyPlayerController.h"
 
 ABOCharacterPlayer::ABOCharacterPlayer()
 {
@@ -36,6 +37,16 @@ void ABOCharacterPlayer::SetupPlayerInputComponent(UInputComponent* PlayerInputC
 	{
 		EnhancedInputComponent->BindAction(InputData->IA_Move, ETriggerEvent::Triggered, this, &ThisClass::Move);
 		EnhancedInputComponent->BindAction(InputData->IA_Look, ETriggerEvent::Triggered, this, &ThisClass::Look);
+		EnhancedInputComponent->BindAction(InputData->IA_SelectionClass, ETriggerEvent::Started, this, &ThisClass::DisplaySelectionClassWidget);
+	}
+}
+
+void ABOCharacterPlayer::ChangeClass(UBOClassData* InClassData)
+{
+	if (InClassData)
+	{
+		GetMesh()->SetSkeletalMesh(InClassData->SkeletalMesh);
+		GetMesh()->SetAnimInstanceClass(InClassData->AnimBP);
 	}
 }
 
@@ -49,6 +60,12 @@ void ABOCharacterPlayer::BeginPlay()
 		{
 			Subsystem->AddMappingContext(InputData->IMC_Default, 0);
 		}
+	}
+
+	if (ClassData)
+	{
+		GetMesh()->SetSkeletalMesh(ClassData->SkeletalMesh);
+		GetMesh()->SetAnimInstanceClass(ClassData->AnimBP);
 	}
 }
 
@@ -72,4 +89,12 @@ void ABOCharacterPlayer::Look(const FInputActionValue& Value)
 	
 	AddControllerYawInput(InputValue.X);
 	AddControllerPitchInput(-InputValue.Y);
+}
+
+void ABOCharacterPlayer::DisplaySelectionClassWidget()
+{
+	if (ABOLobbyPlayerController* PC = Cast<ABOLobbyPlayerController>(GetController()))
+	{
+		PC->ToggleSelectionWidget();
+	}
 }

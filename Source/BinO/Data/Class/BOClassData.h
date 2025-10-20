@@ -6,14 +6,15 @@
 #include "Engine/DataAsset.h"
 #include "BOClassData.generated.h"
 
-class UBOInputData;
-
 UCLASS()
 class BINO_API UBOClassData : public UPrimaryDataAsset
 {
 	GENERATED_BODY()
 
 public:
-	UPROPERTY(EditDefaultsOnly, Category = "Input")
-	TObjectPtr<UBOInputData> InputData;
+	UPROPERTY(EditDefaultsOnly, Category = "Mesh")
+	TObjectPtr<USkeletalMesh> SkeletalMesh;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Animation")
+	TSubclassOf<UAnimInstance> AnimBP;
 };

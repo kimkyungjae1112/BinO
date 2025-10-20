@@ -6,16 +6,10 @@
 #include "GameFramework/GameModeBase.h"
 #include "BOLobbyGameMode.generated.h"
 
-class UBOLobbyWidget;
-
 UCLASS()
 class BINO_API ABOLobbyGameMode : public AGameModeBase
 {
 	GENERATED_BODY()
-	
-protected:
-	UPROPERTY(EditAnywhere, Category = "UI")
-	TSubclassOf<UBOLobbyWidget> LobbyWidgetClass;
 
 protected:
 	virtual void BeginPlay() override;

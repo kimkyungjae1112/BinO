@@ -8,8 +8,4 @@ void ABOLobbyGameMode::BeginPlay()
 {
 	Super::BeginPlay();
 
-	if (UBOLobbyWidget* LobbyWidget = CreateWidget<UBOLobbyWidget>(GetWorld(), LobbyWidgetClass))
-	{
-		LobbyWidget->AddToViewport();
-	}
 }
