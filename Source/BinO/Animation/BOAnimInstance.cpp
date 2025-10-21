@@ -27,8 +27,8 @@ void UBOAnimInstance::NativeUpdateAnimation(float DeltaSeconds)
 		bIsIdle = GroundSpeed < 3.f && MovementComp->GetCurrentAcceleration() == FVector::ZeroVector;
 		bIsFalling = MovementComp->IsFalling();
 		bIsAcceleration = MovementComp->GetCurrentAcceleration().Length() > 0.f;
+		bIsJumping = bIsFalling && (Velocity.Z > 30.f);
 		Direction = UKismetAnimationLibrary::CalculateDirection(Velocity, Character->GetActorRotation());
-		
 
 		FRotator ControlRot = Character->GetControlRotation();
 		FRotator PlayerRot = Character->GetActorRotation();

@@ -24,6 +24,9 @@ public:
 	UPROPERTY(EditAnywhere, Category = "Look")
 	TObjectPtr<UInputAction> IA_Look;
 
+	UPROPERTY(EditAnywhere, Category = "Look")
+	TObjectPtr<UInputAction> IA_Jump;
+
 	UPROPERTY(EditAnywhere, Category = "Widget")
 	TObjectPtr<UInputAction> IA_SelectionClass;
 };

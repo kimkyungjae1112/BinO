@@ -35,6 +35,9 @@ public:
 	bool bIsAcceleration;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data")
+	bool bIsJumping;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Data")
 	float GroundSpeed;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Data")
